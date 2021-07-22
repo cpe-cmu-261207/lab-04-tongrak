@@ -7,13 +7,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src='script.js' defer></script>
 	<title>Lab 04</title>
-	<!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<h1>Minimal Todo List</h1>
-	<input  type='text'>
-	<button>+</button>
+	<!-- Title -->
+	<dir class="flex justify-center">
+		<h1 class="text">Minimal Todo List</h1>
+	</dir>
+	<!-- Input sec -->
+	<dir class="flex justify-center">
+		<input class="border-2" type='text' id="TaskInput">
+		<button class="border-2" onclick="EnteringInput()">+</button>
+
+	</dir>
+	<!-- Task sec -->
+	<dir id="TaskBox">
+
+	</dir>
+
 </body>
 
 </html>
