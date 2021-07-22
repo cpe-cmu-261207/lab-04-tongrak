@@ -9,7 +9,7 @@ const ButtonAppear = () => {
 }
 
 function emptyCheck(input) {
-    if (input == "") {
+    if (input == "" || input == " ") {
         alert("Cannot add empty task")
         return false
     }
@@ -41,7 +41,6 @@ const EnteringInput = () => {
         taskBx.removeChild(taskBx.childNodes[1])
     }
 
-
     if (emptyCheck(taskIn)) {
         //Style and text innit
         taskBx.style.border = "thin solid black"
@@ -63,7 +62,7 @@ const EnteringInput = () => {
         document.getElementById("TaskBox").append(taskBx)
 
         //clear old text
-        document.getElementById("TaskInput").value = " "
+        document.getElementById("TaskInput").value = ""
     }
 
 }
