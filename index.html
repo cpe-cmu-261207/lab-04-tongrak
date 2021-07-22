@@ -13,18 +13,21 @@
 <body>
 	<!-- Title -->
 	<dir class="flex justify-center">
-		<h1 class="text">Minimal Todo List</h1>
+		<a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+			<h1 id="Title">Minimal Todo List</h1>
+		</a>
 	</dir>
 	<!-- Input sec -->
 	<dir class="flex justify-center">
-		<input class="border-2" type='text' id="TaskInput">
-		<button class="border-2" onclick="EnteringInput()">+</button>
+		<input class="border-2" type='text' id="TaskInput" onkeypress="charCodeCheck(event)">
+		<button class="border-2" onclick="EnteringInput()">Add Task</button>
 
 	</dir>
 	<!-- Task sec -->
-	<dir id="TaskBox">
-
+	<dir class="flex justify-center">
+		<h6 class="text">Minimal Todo List</h1>
 	</dir>
+	<dir id="TaskBox"></dir>
 
 </body>
 
