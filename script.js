@@ -2,20 +2,18 @@ const cout = console.log
 // localStorage  initializing and loading
 if (localStorage.getItem('userData') == null) {
     const dataformat = {
-        incompleteArr: {
-            size: 0, data: []
-        }, completeArr: {
-            size: 0, data: []
-        }
+        incompleteArr: [], completeArr: []
     }
     localStorage.setItem('userData', JSON.stringify(dataformat))
 }
+let pastData = JSON.parse(localStorage.getItem("userData"))
+
 
 const charCodeCheck = (eve) => {
     if ((eve.which || eve.keyCode) === 13) EnteringInput()
 }
 
-function emptyCheck(input) {
+function emptyAlert(input) {
     if (input.length == 0 || input.indexOf(' ') == 0) {
         document.getElementById("TaskInput").value = ""
         alert("Cannot add empty task")
@@ -24,7 +22,25 @@ function emptyCheck(input) {
     return true
 }
 
+function emptyCheck(inpu){
+    if (inpu.length == 0 || inpu.indexOf(' ') == 0) {
+        return false
+    }
+    return true
+}
+
+// function 
+
+function returnArrIndex(arr, key) {
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i] === key) return i
+    }
+    return -1
+}
+
 const taskbxCons = (TaskCalled) => {
+    const taskName = TaskCalled;
+
     const taskTe = document.createElement('p')
     const taskBx = document.createElement('div')
     const taskActionBar = document.createElement('div')
@@ -32,13 +48,17 @@ const taskbxCons = (TaskCalled) => {
     const taskDel = document.createElement('button')
 
     const DoneAction = () => {
-        document.getElementById("CompletedBox").append(taskTe)
         taskTe.className = "mainFont text-lg text-center p-1 line-through"
-
+        document.getElementById("CompletedBox").append(taskTe)
+        pastData.incompleteArr[returnArrIndex(pastData.incompleteArr, taskName)] = ""
+        pastData.completeArr.push(taskName)
+        localStorage.setItem('userData', JSON.stringify(pastData))
         taskBx.remove()
     }
 
     const DeleteAction = () => {
+        pastData.incompleteArr[returnArrIndex(pastData.incompleteArr, taskName)] = ""
+        localStorage.setItem('userData', JSON.stringify(pastData))
         taskBx.remove()
     }
 
@@ -77,7 +97,6 @@ const taskbxCons = (TaskCalled) => {
     taskActionBar.append(taskDone)
     taskActionBar.append(taskDel)
     document.getElementById("TaskBox").prepend(taskBx)
-
 }
 
 const complTaskadding = (complTask) => {
@@ -92,10 +111,31 @@ const EnteringInput = () => {
     cout("JS: you just add some thing")
     const taskIn = document.getElementById("TaskInput").value
 
-    if (emptyCheck(taskIn)) {
+    if (emptyAlert(taskIn)) {
         taskbxCons(taskIn)
         //clear old text
+
+        // if (returnArrIndex(pastData.incompleteArr, "") != -1) {
+        //     pastData.incompleteArr[returnArrIndex(pastData.incompleteArr, "")] = taskIn
+        // } else {
+        //     pastData.incompleteArr.push(taskIn)
+        // }
+        pastData.incompleteArr.push(taskIn)
+        localStorage.setItem('userData', JSON.stringify(pastData))
+
         document.getElementById("TaskInput").value = ""
     }
 
 }
+
+//loading old data
+pastData.incompleteArr.map(x => {
+    if (emptyCheck(x)) {
+        taskbxCons(x)
+    }
+})
+pastData.completeArr.map(x => {
+    if (emptyCheck(x)) {
+        complTaskadding(x)
+    }
+})
