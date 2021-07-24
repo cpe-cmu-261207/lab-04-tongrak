@@ -1,14 +1,23 @@
 const cout = console.log
-// localStorage loading
-let in_n_compeTasks = "{'Incomplete': [], 'Complete': []}"
-const inComAcc = JSON.parse(in_n_compeTasks)
+// localStorage  initializing and loading
+if (localStorage.getItem('userData') == null) {
+    const dataformat = {
+        incompleteArr: {
+            size: 0, data: []
+        }, completeArr: {
+            size: 0, data: []
+        }
+    }
+    localStorage.setItem('userData', JSON.stringify(dataformat))
+}
 
 const charCodeCheck = (eve) => {
     if ((eve.which || eve.keyCode) === 13) EnteringInput()
 }
 
 function emptyCheck(input) {
-    if (input.length == 0 || input.indexOf(' ') >= 0) {
+    if (input.length == 0 || input.indexOf(' ') == 0) {
+        document.getElementById("TaskInput").value = ""
         alert("Cannot add empty task")
         return false
     }
@@ -16,58 +25,58 @@ function emptyCheck(input) {
 }
 
 const taskbxCons = (TaskCalled) => {
-        const taskTe = document.createElement('p')
-        const taskBx = document.createElement('div')
-        const taskActionBar = document.createElement('div')
-        const taskDone = document.createElement('button')
-        const taskDel = document.createElement('button')
+    const taskTe = document.createElement('p')
+    const taskBx = document.createElement('div')
+    const taskActionBar = document.createElement('div')
+    const taskDone = document.createElement('button')
+    const taskDel = document.createElement('button')
 
-        const DoneAction = () => {
-            document.getElementById("CompletedBox").append(taskTe)
-            taskTe.className = "mainFont text-lg text-center p-1 line-through"
+    const DoneAction = () => {
+        document.getElementById("CompletedBox").append(taskTe)
+        taskTe.className = "mainFont text-lg text-center p-1 line-through"
 
-            taskBx.remove()
-        }
+        taskBx.remove()
+    }
 
-        const DeleteAction = () => {
-            taskBx.remove()
-        }
+    const DeleteAction = () => {
+        taskBx.remove()
+    }
 
-        const ButtonAppear = () => {
-            taskDone.style.visibility = "visible"
-            taskDel.style.visibility = "visible"
-        }
+    const ButtonAppear = () => {
+        taskDone.style.visibility = "visible"
+        taskDel.style.visibility = "visible"
+    }
 
-        const ButtonGone = () => {
-            taskDone.style.visibility = "hidden"
-            taskDel.style.visibility = "hidden"
-        }
-
-        taskBx.className = "max-w-md mx-auto p-1 border flex flex-col"
-        taskTe.className = "mainFont text-lg text-center p-1"
-        taskActionBar.className = "flex flex-row justify-center space-x-2"
-
-        taskDel.className = "p-0.5 border"
-        taskDel.style.visibility = "hidden"
-        taskDone.className = "p-0.5 border"
+    const ButtonGone = () => {
         taskDone.style.visibility = "hidden"
+        taskDel.style.visibility = "hidden"
+    }
 
-        taskTe.innerHTML = TaskCalled
-        taskDone.innerHTML = "Done"
-        taskDel.innerHTML = "Delete"
+    taskBx.className = "max-w-md mx-auto p-1 border flex flex-col"
+    taskTe.className = "mainFont text-lg text-center p-1"
+    taskActionBar.className = "flex flex-row justify-center space-x-2"
 
-        //Add eventlistener
-        taskBx.addEventListener('mouseenter', ButtonAppear)
-        taskBx.addEventListener('mouseleave', ButtonGone)
-        taskDone.addEventListener("click", DoneAction)
-        taskDel.addEventListener("click", DeleteAction)
+    taskDel.className = "p-0.5 border"
+    taskDel.style.visibility = "hidden"
+    taskDone.className = "p-0.5 border"
+    taskDone.style.visibility = "hidden"
 
-        //Put thing in place
-        taskBx.append(taskTe)
-        taskBx.append(taskActionBar)
-        taskActionBar.append(taskDone)
-        taskActionBar.append(taskDel)
-        document.getElementById("TaskBox").prepend(taskBx)
+    taskTe.innerHTML = TaskCalled
+    taskDone.innerHTML = "Done"
+    taskDel.innerHTML = "Delete"
+
+    //Add eventlistener
+    taskBx.addEventListener('mouseenter', ButtonAppear)
+    taskBx.addEventListener('mouseleave', ButtonGone)
+    taskDone.addEventListener("click", DoneAction)
+    taskDel.addEventListener("click", DeleteAction)
+
+    //Put thing in place
+    taskBx.append(taskTe)
+    taskBx.append(taskActionBar)
+    taskActionBar.append(taskDone)
+    taskActionBar.append(taskDel)
+    document.getElementById("TaskBox").prepend(taskBx)
 
 }
 
