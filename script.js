@@ -72,13 +72,13 @@ const taskbxCons = (TaskCalled) => {
         taskDel.style.visibility = "hidden"
     }
 
-    taskBx.className = "max-w-md mx-auto p-1 border flex flex-col"
-    taskTe.className = "mainFont text-lg text-center p-1"
+    taskBx.className = "max-w-md mx-auto p-1 border border-indigo-500 flex flex-row justify-center"
+    taskTe.className = "mainFont text-lg text-center p-1 pr-5"
     taskActionBar.className = "flex flex-row justify-center space-x-2"
 
-    taskDel.className = "p-0.5 border"
+    taskDel.className = "p-0.5 border bg-pink-400"
     taskDel.style.visibility = "hidden"
-    taskDone.className = "p-0.5 border"
+    taskDone.className = "p-0.5 border bg-blue-400"
     taskDone.style.visibility = "hidden"
 
     taskTe.innerHTML = TaskCalled

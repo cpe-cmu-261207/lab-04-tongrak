@@ -15,26 +15,26 @@
 	</style>
 </head>
 
-<body class="bg-gray-400">
-	<div class="p-1 bg-white max-w-screen-lg mx-auto ">
+<body class="bg-indigo-400">
+	<div class="p-1 bg-white max-w-screen-sm mx-auto my-auto rounded-lg">
 		<!-- Title -->
-		<div class="max-w-md mx-auto p-1 flex flex-col justify-center">
+		<div class="max-w-md mx-auto my-2 p-1 flex flex-col justify-center">
 
-			<h1 id="Title" class="text-xl text-center mainFont pt-1 px-1 mt-1 mx-1">Minimal Todo List</h1>
+			<h1 id="Title" class="underline text-3xl text-center mainFont pt-1 px-1 mt-1 mx-1">Minimal Todo List:</h1>
 			<a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-				<p class="text-sm text-center pb-1 mb-1">click here to get a bit-coin</p>
+				<p class="text-sm text-center pb-1 mb-1 ">Todo list made simple</p>
 			</a>
 
 		</div>
 		<!-- Input sec -->
 		<div class="flex justify-center">
-			<input class="border-2" type='text' id="TaskInput" onkeypress="charCodeCheck(event)">
-			<button class="border-2 p-1" onclick="EnteringInput()">Add Task</button>
+			<input class="border-2 p-1 border-purple-900  max-w-sm" type='text' id="TaskInput" onkeypress="charCodeCheck(event)" >
+			<button class="border-2 p-1 border-purple-900" onclick="EnteringInput()" >Add Task</button>
 
 		</div>
 		<!-- Task sec -->
 		<div class="flex justify-center">
-			<h6 class="text-base mainFont p-1 m-1">Task list:</h1>
+			<h6 class="text-lg mainFont p-1 m-1 mt-3">Task list:</h1>
 		</div>
 		<div id="TaskBox" class=" rounded max-w-md mx-auto">
 			<!-- Keep empty for DOM tasks -->
@@ -48,9 +48,9 @@
 		</div>
 		<!-- completed task box -->
 		<div class="flex justify-center">
-			<h6 class="text-base mainFont p-1 m-1 mt-2">Completed Task list:</h1>
+			<h6 class="text-lg mainFont p-1 m-1 mt-2">Completed Task list:</h1>
 		</div>	
-		<div id="CompletedBox" class=" rounded max-w-md mx-auto my-2 p-1">
+		<div id="CompletedBox" class=" rounded max-w-md mx-auto p-1">
 			<!-- Keep empty for DOM tasks -->
 			<!-- <div class=" rounded max-w-md mx-auto p-1 flex flex-col">
 				<h3 class="mianFont text-lg text-center p-1 line-through">Completed sample task</h3>
