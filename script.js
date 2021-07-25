@@ -1,5 +1,6 @@
+//c++ like cout
 const cout = console.log
-// localStorage  initializing and loading
+// localStorage  initializing
 if (localStorage.getItem('userData') == null) {
     const dataformat = {
         incompleteArr: [], completeArr: []
@@ -8,7 +9,7 @@ if (localStorage.getItem('userData') == null) {
 }
 let pastData = JSON.parse(localStorage.getItem("userData"))
 
-
+//Check Function
 const charCodeCheck = (eve) => {
     if ((eve.which || eve.keyCode) === 13) EnteringInput()
 }
@@ -29,8 +30,6 @@ function emptyCheck(inpu){
     return true
 }
 
-// function 
-
 function returnArrIndex(arr, key) {
     for (i = 0; i < arr.length; i++) {
         if (arr[i] === key) return i
@@ -38,15 +37,17 @@ function returnArrIndex(arr, key) {
     return -1
 }
 
-const taskbxCons = (TaskCalled) => {
-    const taskName = TaskCalled;
+//HTML append function
 
+const taskbxCons = (TaskCalled) => {
+    //Innit vars
+    const taskName = TaskCalled;
     const taskTe = document.createElement('p')
     const taskBx = document.createElement('div')
     const taskActionBar = document.createElement('div')
     const taskDone = document.createElement('button')
     const taskDel = document.createElement('button')
-
+    //listener function
     const DoneAction = () => {
         taskTe.className = "mainFont text-lg text-center p-1 line-through"
         document.getElementById("CompletedBox").append(taskTe)
@@ -72,25 +73,23 @@ const taskbxCons = (TaskCalled) => {
         taskDel.style.visibility = "hidden"
     }
 
-    taskBx.className = "max-w-md mx-auto p-1 border border-indigo-500 flex flex-row justify-center"
+    //content class and style adding
+    taskBx.className = "max-w-sm mx-auto my-0.5 p-1 border border-indigo-500 flex flex-row justify-between"
     taskTe.className = "mainFont text-lg text-center p-1 pr-5"
     taskActionBar.className = "flex flex-row justify-center space-x-2"
-
     taskDel.className = "p-0.5 border bg-pink-400"
     taskDel.style.visibility = "hidden"
     taskDone.className = "p-0.5 border bg-blue-400"
     taskDone.style.visibility = "hidden"
-
+    //Text innitializing
     taskTe.innerHTML = TaskCalled
     taskDone.innerHTML = "Done"
     taskDel.innerHTML = "Delete"
-
     //Add eventlistener
     taskBx.addEventListener('mouseenter', ButtonAppear)
     taskBx.addEventListener('mouseleave', ButtonGone)
     taskDone.addEventListener("click", DoneAction)
     taskDel.addEventListener("click", DeleteAction)
-
     //Put thing in place
     taskBx.append(taskTe)
     taskBx.append(taskActionBar)
@@ -99,6 +98,7 @@ const taskbxCons = (TaskCalled) => {
     document.getElementById("TaskBox").prepend(taskBx)
 }
 
+//Adding completed tasks from localStorage
 const complTaskadding = (complTask) => {
     const taskTe = document.createElement('p')
     taskTe.innerHTML = complTask
@@ -106,7 +106,7 @@ const complTaskadding = (complTask) => {
     taskTe.className = "mainFont text-lg text-center p-1 line-through"
 }
 
-
+//Input function
 const EnteringInput = () => {
     cout("JS: you just add some thing")
     const taskIn = document.getElementById("TaskInput").value

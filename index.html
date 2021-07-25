@@ -16,25 +16,26 @@
 </head>
 
 <body class="bg-indigo-400">
+	<!-- The main box -->
 	<div class="p-1 bg-white max-w-screen-sm mx-auto my-auto rounded-lg">
 		<!-- Title -->
 		<div class="max-w-md mx-auto my-2 p-1 flex flex-col justify-center">
 
-			<h1 id="Title" class="underline text-3xl text-center mainFont pt-1 px-1 mt-1 mx-1">Minimal Todo List:</h1>
+			<h1 id="Title" class="underline text-3xl text-center mainFont pt-1 px-1 mt-1 mx-1">Minimal Todo Lists:</h1>
 			<a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-				<p class="text-sm text-center pb-1 mb-1 ">Todo list made simple</p>
+				<p class="text-sm text-center pb-1 mb-1 ">Todo-list made simple</p>
 			</a>
 
 		</div>
 		<!-- Input sec -->
 		<div class="flex justify-center">
-			<input class="border-2 p-1 border-purple-900  max-w-sm" type='text' id="TaskInput" onkeypress="charCodeCheck(event)" >
+			<input class="border-2 p-1 border-purple-900  max-w-sm" type='text' id="TaskInput" onkeypress="charCodeCheck(event)" placeholder="Task here" >
 			<button class="border-2 p-1 border-purple-900" onclick="EnteringInput()" >Add Task</button>
 
 		</div>
 		<!-- Task sec -->
 		<div class="flex justify-center">
-			<h6 class="text-lg mainFont p-1 m-1 mt-3">Task list:</h1>
+			<h6 class="text-lg mainFont p-1 m-1 mt-3">Task(s) list:</h1>
 		</div>
 		<div id="TaskBox" class=" rounded max-w-md mx-auto">
 			<!-- Keep empty for DOM tasks -->
@@ -48,7 +49,7 @@
 		</div>
 		<!-- completed task box -->
 		<div class="flex justify-center">
-			<h6 class="text-lg mainFont p-1 m-1 mt-2">Completed Task list:</h1>
+			<h6 class="text-lg mainFont p-1 m-1 mt-2">Completed Task(s) list:</h1>
 		</div>	
 		<div id="CompletedBox" class=" rounded max-w-md mx-auto p-1">
 			<!-- Keep empty for DOM tasks -->
